@@ -1,0 +1,32 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Zuplo API"
+  },
+  "paths": {
+    "/loan-app": {
+      "x-zuplo-path": {
+        "pathMode": "url-pattern"
+      },
+      "post": {
+        "summary": "Create a loan application",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "default",
+            "module": "$import(./modules/hello-world)",
+            "options": {}
+          },
+          "policies": {
+            "inbound": [
+              "set-headers-inbound"
+            ]
+          }
+        },
+        "operationId": "17cd5177-0eee-4322-8fe8-23590b614fd2"
+      }
+    }
+  }
+}

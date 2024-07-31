@@ -1,0 +1,41 @@
+{
+  "policies": [
+    {
+      "handler": {
+        "export": "SetHeadersInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "headers": [
+            {
+              "name": "api-key",
+              "value": "$env{API_KEY}"
+            }
+          ]
+        }
+      },
+      "name": "set-headers-inbound",
+      "policyType": "set-headers-inbound"
+    },
+    {
+      "handler": {
+        "export": "BasicAuthInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "accounts": [
+            {
+              "data": {
+                "name": "John Doe",
+                "email": "john.doe@gmail.com"
+              },
+              "password": "$env(BA_PASSWORD)",
+              "username": "$env(BA_USERNAME)"
+            }
+          ],
+          "allowUnauthenticatedRequests": false
+        }
+      },
+      "name": "basic-auth-inbound",
+      "policyType": "basic-auth-inbound"
+    }
+  ]
+}
